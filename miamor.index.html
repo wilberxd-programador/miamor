@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>¿Me querés amor?</title>
+  <style>
+    body {
+      text-align: center;
+      font-family: sans-serif;
+      background-color: #ffe4e1;
+    }
+    button {
+      padding: 15px 25px;
+      margin: 10px;
+      font-size: 20px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    .si { background-color: #ff69b4; color: white; }
+    .no { background-color: #c0c0c0; color: black; }
+    img {
+      max-width: 300px;
+      border-radius: 20px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>¿Me querés amor?</h1>
+  <img id="imagen" src="https://i.pinimg.com/originals/8b/96/46/8b9646212bdf7f4f99a9e285b0cc3c35.gif" alt="Snoopy">
+  <br>
+  <button class="si" onclick="responder('si')">Sí</button>
+  <button class="no" onclick="responder('no')">No</button>
+
+  <script>
+    let intentos = 0;
+
+    function responder(respuesta) {
+      const imagen = document.getElementById('imagen');
+      if (respuesta === 'si') {
+        document.body.innerHTML = '<h1>¡Que linda mi amor, te amo mucho! ❤</h1>' +
+          '<img src="https://i.pinimg.com/originals/7d/0c/47/7d0c4748ee20e95c676d7c2e35a07d1e.gif" alt="Snoopy enamorado">';
+      } else {
+        intentos++;
+        if (intentos === 1) {
+          document.querySelector('h1').innerText = '¿Por qué no mi amor? Decí que sí amor';
+          imagen.src = 'https://i.pinimg.com/originals/1d/82/10/1d82105fcef2e55888807fb9f245eb0c.gif';
+        } else if (intentos === 2) {
+          document.querySelector('h1').innerText = 'Decí que sí amigo, ¿cómo que no? 😠';
+          imagen.src = 'https://i.pinimg.com/originals/b1/7c/8c/b17c8c1ad3c20d71f6b16e0ef5c97569.gif';
+        } else if (intentos >= 3) {
+          document.body.innerHTML = '<h1>Mátate, mátate</h1>' +
+            '<img src="https://i.pinimg.com/originals/4c/5c/f0/4c5cf00ea2892c3e58b2f9b2585fa131.gif" alt="Snoopy triste">';
+        }
+      }
+    }
+  </script>
+</body>
+</html>
