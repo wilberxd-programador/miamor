@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>¿Me querés?</title>
+  <style>
+    body {
+      text-align: center;
+      background-color: #fff0f5;
+      font-family: 'Arial', sans-serif;
+      overflow: hidden;
+      position: relative;
+      height: 100vh;
+      margin: 0;
+    }
+    #corazon {
+      width: 180px;
+      margin: 20px auto;
+      display: block;
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(255, 105, 180, 0.5);
+    }
+    #pregunta {
+      font-size: 32px;
+      color: #ff1493;
+      margin: 20px;
+      font-weight: bold;
+      text-shadow: 1px 1px 2px #ff69b4;
+    }
+    button {
+      font-size: 22px;
+      padding: 12px 40px;
+      margin: 10px;
+      border-radius: 12px;
+      border: none;
+      cursor: pointer;
+      user-select: none;
+      position: relative;
+      transition: background-color 0.3s ease;
+    }
+    #si {
+      background-color: #32cd32;
+      color: white;
+      box-shadow: 0 4px 8px #28a428;
+    }
+    #si:hover {
+      background-color: #2ba92b;
+    }
+    #no {
+      background-color: #1e90ff;
+      color: white;
+      position: absolute;
+      box-shadow: 0 4px 8px #1764c0;
+      transition: left 0.3s ease, top 0.3s ease;
+    }
+  </style>
+</head>
+<body>
+
+  <img id="corazon" src="https://i.pinimg.com/564x/37/3a/82/373a82f01e09b1e5ca03a8ebf5d95353.jpg" alt="imagen kawaii" />
+  <div id="pregunta">Me querés amor?</div>
+
+  <button id="si">Sí</button>
+  <button id="no">No</button>
+
+  <script>
+    const noBtn = document.getElementById('no');
+    const pregunta = document.getElementById('pregunta');
+    const corazon = document.getElementById('corazon');
+    let intentos = 0;
+
+    // Array de imágenes lindas estilo Snoopy, Puca, Garu (de uso libre o similares)
+    const imagenes = [
+      "https://i.pinimg.com/564x/37/3a/82/373a82f01e09b1e5ca03a8ebf5d95353.jpg", // perrito kawaii rosa
+      "https://i.pinimg.com/564x/9e/96/8c/9e968c2be38a95d03ee167a0a3479e4c.jpg", // gato kawaii con flor
+      "https://i.pinimg.com/564x/c3/b4/b8/c3b4b830a329e25f86db3778ab33a537.jpg", // perro feliz
+      "https://i.pinimg.com/564x/96/8b/45/968b4584e4d8aebf9b735b46e1338a2a.jpg"  // dibujo adorable con corazón
+    ];
+
+    noBtn.addEventListener('mouseover', () => {
+      const x = Math.random() * (window.innerWidth - 120);
+      const y = Math.random() * (window.innerHeight - 70);
+      noBtn.style.left = ${x}px;
+      noBtn.style.top = ${y}px;
+
+      if (intentos === 0) {
+        pregunta.textContent = "¿Por qué no mi amor? Decí que sí amor";
+      } else if (intentos === 1) {
+        pregunta.textContent = "Decí que sí amigo, cómo que no😠";
+      } else if (intentos === 2) {
+        pregunta.textContent = "Mátate mátate";
+      }
+
+      // Cambiar imagen a la siguiente en el array para hacerlo más divertido
+      corazon.src = imagenes[intentos % imagenes.length];
+
+      intentos++;
+    });
+
+    document.getElementById('si').addEventListener('click', () => {
+      pregunta.textContent = "Que linda mi amor, te amo mucho si❤";
+      // Cambiar imagen a una súper linda y amorosa
+      corazon.src = "https://i.pinimg.com/564x/14/98/92/1498920bf150324a5c2c2764e7e93a9c.jpg"; // corazón rosa kawaii
+      // Dejar el botón NO quieto en el último lugar
+      noBtn.style.left = "calc(50% + 100px)";
+      noBtn.style.top = "calc(50% + 50px)";
+    });
+  </script>
+
+</body>
+</html>
